@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro'
-import { View, Image, navigator } from '@tarojs/components'
+import { View, Image, navigator, Button  } from '@tarojs/components'
 import { AtIcon } from 'taro-ui'
 
 import logoImg from '../../assets/images/logo_taro.png'
@@ -27,7 +27,8 @@ export default class Index extends Taro.Component {
           title: '我是用户',
           icon: iconView
         }
-      ]
+      ],
+      testId: ''
     }
   }
 
@@ -40,6 +41,7 @@ export default class Index extends Taro.Component {
   }
 
   gotoPanel = e => {
+    
     const { id } = e.currentTarget.dataset
     if(id == 'shopkeeper'){
       Taro.navigateTo({
@@ -50,8 +52,75 @@ export default class Index extends Taro.Component {
         url: `/pages/panel/index?id=${id.toLowerCase()}`
       })  
     }
-    
   }
+  /**
+   * 获取数据
+   */
+  getData(){
+    wx.cloud.callFunction({
+      name: 'get'
+    }).then(data => {
+      console.log('这里是获取到的数据', data)
+      let list = data.result.data
+      if (list.length > 0 ) {
+        this.setState({
+          testId: list[0]._id
+        })
+      }
+      
+
+    })
+  }
+  /**
+   * 添加数据
+   */
+  addData() {
+    wx.cloud.callFunction({
+      name: 'add'
+    }).then(data => {
+      console.log(data)
+    })
+  }
+  /**
+   * 修改数据
+   */
+  modifyData() {
+    if (!this.state.testId) {
+      console.error('请先获取数据，之后再修改数据')
+      return
+    }
+    wx.cloud.callFunction({
+      name: 'modify',
+      data: {
+        id: this.state.testId,
+        content: 456456
+      }
+    }).then(data => {
+      console.log(data)
+    })
+  }
+
+  /**
+   * 删除数据
+   */
+  removeData() {
+    if (!this.state.testId) {
+      console.error('请先获取数据，之后再修改数据')
+      return
+    }
+    wx.cloud.callFunction({
+      name: 'remove',
+      data: {
+        id: this.state.testId
+      }
+    }).then(data => {
+      console.log(data)
+      this.setState({
+        testId: ''
+      })
+    })
+  }
+
   render () {
     const { list } = this.state
 
@@ -60,6 +129,10 @@ export default class Index extends Taro.Component {
         <View className='logo'>
           <open-data type="userAvatarUrl"></open-data>
         </View>
+        <Button plain onClick={this.getData}>获取数据</Button>
+        <Button plain onClick={this.addData}>增加一条数据</Button>
+        <Button plain onClick={this.removeData}>删除一条数据</Button>
+        <Button plain onClick={this.modifyData}>修改一条数据</Button>
         <View className='page-title'><open-data type="userNickName"></open-data></View>
         <View className='module-list'>
           {list.map((item, index) => (

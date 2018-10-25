@@ -1,4 +1,7 @@
-dist/
+dist/**/node_modules/
+dist/**/npm/
+dist/**/assets/
+dist/**/pages/
 node_modules/
 
 yarn.lock

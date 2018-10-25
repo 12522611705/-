@@ -69,7 +69,9 @@ class App extends Component {
     }
   }
 
-  componentDidMount () {}
+  componentDidMount () {
+    wx.cloud.init()
+  }
 
   componentDidShow () {}
 
