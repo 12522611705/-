@@ -1,62 +1,31 @@
 import Taro from '@tarojs/taro'
-import { View, Image } from '@tarojs/components'
+import { View, Image, navigator } from '@tarojs/components'
 import { AtIcon } from 'taro-ui'
 
 import logoImg from '../../assets/images/logo_taro.png'
 import iconBasic from '../../assets/images/icon-list-basic.png'
 import iconView from '../../assets/images/icon-list-view.png'
-import iconAction from '../../assets/images/icon-list-action.png'
-import iconForm from '../../assets/images/icon-list-form.png'
-import iconLayout from '../../assets/images/icon-list-layout.png'
-import iconNavigation from '../../assets/images/icon-list-navigation.png'
 
 import './index.scss'
 
 export default class Index extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro UI'
+    navigationBarTitleText: '天天有水'
   }
 
   constructor () {
     super(...arguments)
-
     this.state = {
       list: [
         {
-          id: 'Basic',
-          title: '基础',
-          content: '包含颜色、文本、图标等',
+          id: 'shopkeeper',
+          title: '我是店主',
           icon: iconBasic
         },
         {
-          id: 'View',
-          title: '视图',
-          content: '包含通告栏、标签、徽标等',
+          id: 'user',
+          title: '我是用户',
           icon: iconView
-        },
-        {
-          id: 'Action',
-          title: '操作反馈',
-          content: '包含对话框、进度条、动作面板等',
-          icon: iconAction
-        },
-        {
-          id: 'Form',
-          title: '表单',
-          content: '包含输入框、单选框、复选框等',
-          icon: iconForm
-        },
-        {
-          id: 'Layout',
-          title: '布局',
-          content: '包含列表、浮层、卡片等',
-          icon: iconLayout
-        },
-        {
-          id: 'Navigation',
-          title: '导航',
-          content: '包含标签栏、导航栏等',
-          icon: iconNavigation
         }
       ]
     }
@@ -64,7 +33,7 @@ export default class Index extends Taro.Component {
 
   onShareAppMessage () {
     return {
-      title: 'Taro UI',
+      title: '天天有水',
       path: '/pages/index/index',
       imageUrl: 'http://storage.360buyimg.com/mtd/home/share1535013100318.jpg'
     }
@@ -72,20 +41,26 @@ export default class Index extends Taro.Component {
 
   gotoPanel = e => {
     const { id } = e.currentTarget.dataset
-    Taro.navigateTo({
-      url: `/pages/panel/index?id=${id.toLowerCase()}`
-    })
+    if(id == 'shopkeeper'){
+      Taro.navigateTo({
+        url: `/pages/register/index?id=${id.toLowerCase()}`
+      })
+    }else{
+      Taro.navigateTo({
+        url: `/pages/panel/index?id=${id.toLowerCase()}`
+      })  
+    }
+    
   }
-
   render () {
     const { list } = this.state
 
     return (
       <View className='page page-index'>
         <View className='logo'>
-          <Image src={logoImg} className='img' mode='widthFix' />
+          <open-data type="userAvatarUrl"></open-data>
         </View>
-        <View className='page-title'>Taro UI</View>
+        <View className='page-title'><open-data type="userNickName"></open-data></View>
         <View className='module-list'>
           {list.map((item, index) => (
             <View
@@ -93,22 +68,20 @@ export default class Index extends Taro.Component {
               key={index}
               data-id={item.id}
               data-name={item.title}
-              data-list={item.subpages}
-              onClick={this.gotoPanel}
-            >
-              <View className='module-list__icon'>
-                <Image src={item.icon} className='img' mode='widthFix' />
-              </View>
-              <View className='module-list__info'>
-                <View className='title'>{item.title}</View>
-                <View className='content'>{item.content}</View>
-              </View>
-              <View className='module-list__arrow'>
-                <AtIcon value='chevron-right' />
-              </View>
+              onClick={this.gotoPanel}>
+                <View className='module-list__icon'>
+                  <Image src={item.icon} className='img' mode='widthFix' />
+                </View>
+                <View className='module-list__info'>
+                  <View className='title'>{item.title}</View>
+                </View>
+                <View className='module-list__arrow'>
+                  <AtIcon value='chevron-right' />
+                </View>
             </View>
           ))}
         </View>
+        <official-account></official-account>
       </View>
     )
   }

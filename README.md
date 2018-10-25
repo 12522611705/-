@@ -1,12 +1,4 @@
-# Taro UI Demo
-
-`Taro UI` 示例库
-
-## 体验
-
-请使用微信扫一扫以下体验码
-
-![QRCode](https://user-images.githubusercontent.com/1240899/44580574-fe838800-a7cc-11e8-890d-73cf048ef8c2.jpg)
+# 水卡
 
 ## 相关链接
 
