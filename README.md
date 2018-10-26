@@ -1,5 +1,10 @@
 # 水卡
 
+## AppId
+```bash
+wx29f1c0bb66e20378
+```
+
 ## 相关链接
 
 - [Taro UI 使用文档](https://taro-ui.aotu.io)

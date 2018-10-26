@@ -5,7 +5,5 @@ cloud.init()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-    const db = cloud.database()
-    let data = await db.collection('store_users').get()
-    return data
+
 }
