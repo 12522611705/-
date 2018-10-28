@@ -1,5 +1,5 @@
 {
-  "name": "index",
+  "name": "addmember",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "wx-server-sdk": "latest"
+  "devDependencies": {
+    "wx-server-sdk": "0.0.22"
   }
 }

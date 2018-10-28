@@ -5,6 +5,7 @@ import { AtIcon } from 'taro-ui'
 import logoImg from '../../assets/images/logo_taro.png'
 import iconBasic from '../../assets/images/icon-list-basic.png'
 import iconView from '../../assets/images/icon-list-view.png'
+import { callFunction } from '../../assets/uilts/callFunction.js'
 
 import './index.scss'
 
@@ -47,67 +48,41 @@ export default class Index extends Taro.Component {
         }
     }
     /**
-     * 获取数据
+     * 当前用户是否是店主
      */
-    getData(){
-        wx.cloud.callFunction({
-            name: 'get'
-        }).then(data => {
-            console.log('这里是获取到的数据', data)
-            let list = data.result.data
-            if (list.length > 0 ) {
-                this.setState({
-                  testId: list[0]._id
-                })
-            }
+    isShopkeeper() {
+        callFunction('isShopkeeper').then(data => {
+            console.error('当前用户是否是店主', data)
         })
     }
+
     /**
-     * 添加数据
+     * 添加店主
      */
-    addData() {
-        wx.cloud.callFunction({
-            name: 'add'
+    addShopkeeper() {
+        callFunction('addShopkeeper', {
+            name: '王二',
+            mobile: '18026265559'
         }).then(data => {
-            console.log(data)
+            console.error('店主添加状态', data)
         })
     }
+
     /**
-     * 修改数据
+     * 添加用户
      */
-    modifyData() {
-        if (!this.state.testId) {
-            console.error('请先获取数据，之后再修改数据')
-            return
-        }
-        wx.cloud.callFunction({
-            name: 'modify',
-            data: {
-                id: this.state.testId,
-                content: 456456
-            }
+    addMember() {
+        callFunction('editMember', {
+            cardCode: 'B12',
+            name: '王老二',
+            address: '广州市白云大道北',
+            waterType: '景天',
+            salesType: '10-1',
+            mobile: '12399889999',
+            phone: '3613991',
+            PessureBarrels: '10个'
         }).then(data => {
-            console.log(data)
-        })
-    }
-    /**
-     * 删除数据
-     */
-    removeData() {
-        if (!this.state.testId) {
-            console.log('请先获取数据，之后再修改数据')
-            return
-        }
-        wx.cloud.callFunction({
-            name: 'remove',
-            data: {
-                id: this.state.testId
-            }
-        }).then(data => {
-            console.log(data)
-            this.setState({
-                testId: ''
-            })
+            console.error('用户添加成功', data)
         })
     }
 
@@ -121,10 +96,14 @@ export default class Index extends Taro.Component {
                 <View className='page-title'>
                     <open-data type="userNickName"></open-data>
                 </View>
-                <Button plain onClick={this.getData}>获取数据</Button>
-                <Button plain onClick={this.addData}>增加一条数据</Button>
-                <Button plain onClick={this.removeData}>删除一条数据</Button>
-                <Button plain onClick={this.modifyData}>修改一条数据</Button>
+                <Button plain onClick={this.isShopkeeper}>判断是否是店主</Button>
+                <Button plain onClick={this.addShopkeeper}>添加店主</Button>
+                <Button plain onClick={this.addMember}>添加用户</Button>
+                <Button plain onClick={this.modifyData}>编辑卡片</Button>
+                <Button plain onClick={this.modifyData}>获取卡片列表</Button>
+                <Button plain onClick={this.modifyData}>获取卡片详情</Button>
+                <Button plain onClick={this.modifyData}>获取水卡记录</Button>
+                <Button plain onClick={this.modifyData}>编辑水卡记录</Button>
                 <View className='module-list'>
                     {
                         list.map((item, index) => (
