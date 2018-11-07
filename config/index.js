@@ -53,7 +53,16 @@ const config = {
   defineConstants: {
   },
   copy: {
-     patterns: [
+    patterns: [
+      {
+        from:'src/cloud-functions',
+        to:'dist/cloud-functions',
+        ignore:'node_modules'
+      },
+      {
+        from:'src/project.config.json',
+        to:'dist/project.config.json',
+      }
     ],
     options: {
     }

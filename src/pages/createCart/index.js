@@ -13,7 +13,12 @@ export default class PanelBasic extends Component {
         super(...arguments)
         this.state = {
             form:{
-                username:''
+                username:'',
+                address:'',
+                type:'',
+                mobile:'',
+                price:'',
+                owePail:''
             }
         }
     }
@@ -28,51 +33,53 @@ export default class PanelBasic extends Component {
         const { form } = this.state;
         return (
             <View className="page page-createCart">
-                <View style={{visibility:"hidden"}}>1</View>
-                <AtInput
-                    name='username'
-                    title='用户名'
-                    type='text'
-                    placeholder='请输入用户名'
-                    value={form.username}
-                    onChange={this.handleChange.bind(this)}/>
-                <AtInput
-                    name='address'
-                    title='用户地址'
-                    type='text'
-                    placeholder='请输入用户地址'
-                    value={form.address}
-                    onChange={this.handleChange.bind(this)}/>
-                <AtInput
-                    name='type'
-                    title='水种'
-                    type='text'
-                    placeholder='请输入水的名称'
-                    value={form.type}
-                    onChange={this.handleChange.bind(this)}/>
-                <AtInput
-                    name='mobile'
-                    title='手机号码'
-                    type='text'
-                    placeholder='请输入手机号码'
-                    value={form.mobile}
-                    onChange={this.handleChange.bind(this)}/>
-                <AtInput
-                    name='price'
-                    title='水单价'
-                    type='text'
-                    placeholder='请输入水单价'
-                    value={form.price}
-                    onChange={this.handleChange.bind(this)}/>
-                <AtInput
-                    name='owePail'
-                    title='压桶'
-                    type='text'
-                    placeholder='请输入压桶数量'
-                    value={form.owePail}
-                    onChange={this.handleChange.bind(this)}/>
-                <View style={{visibility:"hidden"}}>1</View>
-                <AtButton type='primary'>创建水卡</AtButton>
+                <View className="main">
+                    <AtInput
+                        name='username'
+                        title='用户名'
+                        type='text'
+                        placeholder='请输入用户名'
+                        value={form.username}
+                        onChange={this.handleChange.bind(this)}/>
+                    <AtInput
+                        name='address'
+                        title='用户地址'
+                        type='text'
+                        placeholder='请输入用户地址'
+                        value={form.address}
+                        onChange={this.handleChange.bind(this)}/>
+                    <AtInput
+                        name='type'
+                        title='水种'
+                        type='text'
+                        placeholder='请输入水的名称'
+                        value={form.type}
+                        onChange={this.handleChange.bind(this)}/>
+                    <AtInput
+                        name='mobile'
+                        title='手机号码'
+                        type='text'
+                        placeholder='请输入手机号码'
+                        value={form.mobile}
+                        onChange={this.handleChange.bind(this)}/>
+                    <AtInput
+                        name='price'
+                        title='水单价'
+                        type='text'
+                        placeholder='请输入水单价'
+                        value={form.price}
+                        onChange={this.handleChange.bind(this)}/>
+                    <AtInput
+                        name='owePail'
+                        title='压桶'
+                        type='text'
+                        placeholder='请输入压桶数量'
+                        value={form.owePail}
+                        onChange={this.handleChange.bind(this)}/>
+                </View>
+                <View className="row">
+                    <AtButton type='primary'>保存</AtButton>
+                </View>
             </View>
         )
     }

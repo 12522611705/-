@@ -35,7 +35,7 @@ export default class Index extends Taro.Component {
             imageUrl: 'http://storage.360buyimg.com/mtd/home/share1535013100318.jpg'
         }
     }
-    gotoPanel = e => {
+    goPage = e => {
         const { id } = e.currentTarget.dataset
         if(id == 'shopkeeper'){
             Taro.navigateTo({
@@ -43,10 +43,11 @@ export default class Index extends Taro.Component {
             })
         }else{
             Taro.navigateTo({
-                url: `/pages/panel/index?id=${id.toLowerCase()}`
+                url: `/pages/basic/index?id=${id.toLowerCase()}`
             })  
         }
     }
+    
     /**
      * 当前用户是否是店主
      */
@@ -96,37 +97,27 @@ export default class Index extends Taro.Component {
                 <View className='page-title'>
                     <open-data type="userNickName"></open-data>
                 </View>
-                <Button plain onClick={this.isShopkeeper}>判断是否是店主</Button>
+                {
+                    list.map((item, index) => (
+                        <View
+                            className="page-btn"
+                            key={index}
+                            data-id={item.id}
+                            data-name={item.title}
+                            onClick={this.goPage}>
+                                <Text className="text">{item.title}</Text>
+                        </View>
+                    ))
+                }
+                <official-account></official-account>
+                {/*<Button plain onClick={this.isShopkeeper}>判断是否是店主</Button>
                 <Button plain onClick={this.addShopkeeper}>添加店主</Button>
                 <Button plain onClick={this.addMember}>添加用户</Button>
                 <Button plain onClick={this.modifyData}>编辑卡片</Button>
                 <Button plain onClick={this.modifyData}>获取卡片列表</Button>
                 <Button plain onClick={this.modifyData}>获取卡片详情</Button>
                 <Button plain onClick={this.modifyData}>获取水卡记录</Button>
-                <Button plain onClick={this.modifyData}>编辑水卡记录</Button>
-                <View className='module-list'>
-                    {
-                        list.map((item, index) => (
-                            <View
-                                className='module-list__item'
-                                key={index}
-                                data-id={item.id}
-                                data-name={item.title}
-                                onClick={this.gotoPanel}>
-                                    <View className='module-list__icon'>
-                                        <Image src={item.icon} className='img' mode='widthFix' />
-                                    </View>
-                                    <View className='module-list__info'>
-                                        <View className='title'>{item.title}</View>
-                                    </View>
-                                    <View className='module-list__arrow'>
-                                        <AtIcon value='chevron-right' />
-                                    </View>
-                            </View>
-                        ))
-                    }
-                </View>
-                <official-account></official-account>
+                <Button plain onClick={this.modifyData}>编辑水卡记录</Button>*/}
             </View>
         )
     }
