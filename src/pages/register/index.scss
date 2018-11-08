@@ -1,25 +1,7 @@
-.page-register{
-	display: flex;
-    justify-content:center;
-    align-items:Center;
+.page-register input,
+.page-register label{
+	text-indent: 20px;
 }
-.register{
-	width: 600px;
-	border: 1px solid #6190E8;
-	border-radius: 8px;
-}
-.register .title{
-	font-size: 50px;
-	color: #6190E8;
-	text-align: center;
-	height: 120px;
-	line-height: 120px;
-	border-bottom: 1px solid #6190E8;
-}
-.register .main{
-	padding: 0px 40px 40px;
-	background-color: #fff;
-}
-.register .main .text{
-	width: 100%;
+.page-register .main{
+	margin: 40px 0px;
 }

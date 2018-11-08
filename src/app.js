@@ -14,9 +14,11 @@ class App extends Component {
         pages: [
             'pages/index/index',
             'pages/cartList/index',
+            'pages/userList/index',
             'pages/cart/index',
             'pages/createCart/index',
             'pages/cartDetail/index',
+            'pages/userDetail/index',
             'pages/addUser/index',
             'pages/register/index',
             'pages/record/index',
