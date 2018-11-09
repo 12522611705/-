@@ -53,7 +53,7 @@ export default class Index extends Taro.Component {
      */
     isShopkeeper() {
         callFunction('isShopkeeper').then(data => {
-            console.error('当前用户是否是店主', data)
+            console.log('当前用户是否是店主', data)
         })
     }
 
@@ -65,7 +65,7 @@ export default class Index extends Taro.Component {
             name: '王二',
             mobile: '18026265559'
         }).then(data => {
-            console.error('店主添加状态', data)
+            console.log('店主添加状态', data)
         })
     }
 
@@ -83,7 +83,7 @@ export default class Index extends Taro.Component {
             phone: '3613991',
             PessureBarrels: '10个'
         }).then(data => {
-            console.error('用户添加成功', data)
+            console.log('用户添加成功', data)
         })
     }
 

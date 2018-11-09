@@ -3,11 +3,7 @@ cloud.init()
 const db = cloud.database()
 
 exports.main = async (event, context) => {
-    let {
-        name,
-        mobile,
-        userInfo
-    } = event
+    let { name, mobile, userInfo } = event
     let message = ''
     if (!name) {
         message = '请填写店主名称'  
