@@ -3,7 +3,11 @@ cloud.init()
 const db = cloud.database()
 
 exports.main = async (event, context) => {
-    let { userInfo, openId, ...cardInfo } = event
+    let {
+        userInfo,
+        openId,
+        ...cardInfo
+    } = event
     let {status, message} = paramVerify(cardInfo)
     if (!status) {
         return {
@@ -67,7 +71,13 @@ exports.main = async (event, context) => {
  * @returns {Object} 返回当前校验状态和提示信息
  */
 const paramVerify = (param = {}) => {
-    let { name, address, waterType, mobile, phone } = param
+    let {
+        name,
+        address,
+        waterType,
+        mobile,
+        phone
+    } = param
     if (!name) {
         return {
             status: false,
@@ -77,7 +87,7 @@ const paramVerify = (param = {}) => {
     if (!address) {
         return {
             status: false,
-            message: '请填写用户地址'
+            message: '请填写用户名'
         }
     }
     if (!waterType) {
@@ -86,6 +96,7 @@ const paramVerify = (param = {}) => {
             message: '请填写水种类'
         }
     }
+
     if (!mobile || !phone) {
         return {
             status: false,

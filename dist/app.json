@@ -11,12 +11,13 @@
     "pages/register/index",
     "pages/record/index",
     "pages/basic/index",
-    "pages/history/index"
+    "pages/history/index",
+    "pages/editor/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "天天有水",
     "navigationBarTextStyle": "black"
   }
 }

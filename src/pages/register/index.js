@@ -23,7 +23,7 @@ export default class PanelBasic extends Component {
       
     }
     handleChange(){
-
+        
     }
     /*页面跳转*/
     goPage(e){
