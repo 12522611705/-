@@ -110,14 +110,14 @@ export default class Index extends Taro.Component {
                     ))
                 }
                 <official-account></official-account>
-                {/*<Button plain onClick={this.isShopkeeper}>判断是否是店主</Button>
+                <Button plain onClick={this.isShopkeeper}>判断是否是店主</Button>
                 <Button plain onClick={this.addShopkeeper}>添加店主</Button>
                 <Button plain onClick={this.addMember}>添加用户</Button>
                 <Button plain onClick={this.modifyData}>编辑卡片</Button>
                 <Button plain onClick={this.modifyData}>获取卡片列表</Button>
                 <Button plain onClick={this.modifyData}>获取卡片详情</Button>
                 <Button plain onClick={this.modifyData}>获取水卡记录</Button>
-                <Button plain onClick={this.modifyData}>编辑水卡记录</Button>*/}
+                <Button plain onClick={this.modifyData}>编辑水卡记录</Button>
             </View>
         )
     }
