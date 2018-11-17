@@ -24,26 +24,36 @@ class App extends Component {
             'pages/record/index',
             'pages/basic/index',
             'pages/history/index',
+            'pages/editor/index',
         ],
         window: {
             backgroundTextStyle: 'light',
             navigationBarBackgroundColor: '#fff',
-            navigationBarTitleText: 'WeChat',
+            navigationBarTitleText: '天天有水',
             navigationBarTextStyle: 'black'
         }
     }
-
+    // 页面被载入    
+    componentWillMount(){}
+    // 页面渲染完成
     componentDidMount () {
         wx.cloud.init()
     }
-
-    componentDidShow () {}
-
-    componentDidHide () {}
-
-    componentCatchError () {}
-
-    render () {
+    // 页面即将更新   
+    componentWillUpdate(){}
+    // 页面更新完成
+    componentDidUpdate(){}
+    // 页面展示出来
+    componentDidShow(){}
+    // 页面被隐藏
+    componentDidHide(){}
+    // 
+    componentCatchError(){}
+    // 页面上拉触底事件的处理函数
+    onReachBottom(){}
+    // 页面滚动触发事件的处理函数
+    onPageScroll(){}
+    render(){
         return <Index />
     }
 }

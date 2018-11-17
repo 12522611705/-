@@ -30,19 +30,52 @@ var _App = function (_BaseComponent) {
   }
 
   _createClass(_App, [{
+    key: "componentWillMount",
+
+    // 页面被载入    
+    value: function componentWillMount() {}
+    // 页面渲染完成
+
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       wx.cloud.init();
     }
+    // 页面即将更新   
+
+  }, {
+    key: "componentWillUpdate",
+    value: function componentWillUpdate() {}
+    // 页面更新完成
+
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {}
+    // 页面展示出来
+
   }, {
     key: "componentDidShow",
     value: function componentDidShow() {}
+    // 页面被隐藏
+
   }, {
     key: "componentDidHide",
     value: function componentDidHide() {}
+    // 
+
   }, {
     key: "componentCatchError",
     value: function componentCatchError() {}
+    // 页面上拉触底事件的处理函数
+
+  }, {
+    key: "onReachBottom",
+    value: function onReachBottom() {}
+    // 页面滚动触发事件的处理函数
+
+  }, {
+    key: "onPageScroll",
+    value: function onPageScroll() {}
   }, {
     key: "_createData",
     value: function _createData() {}
